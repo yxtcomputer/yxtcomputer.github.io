@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+</head>
+<style type="text/css">
+body,div{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+p{
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 22px;
+}
+.content{
+    width: 600px;
+    height: 610px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+table{
+    width: 320px;
+    height: 400px;
+    padding: 43px 12px 16px;
+    margin: 0 auto;
+    background-image: url("../image/计算器.jpg");
+    border: 1px solid black;
+}
+input{
+    width: 66px;
+    height: 52px;
+}
+#look{
+    width: 268px;
+    height: 52px;
+    margin-bottom: 12px;
+    font-size: 22px;
+    text-align: right;
+}
+#qc,#dy{
+    width: 142px;
+    height: 52px;
+}
+</style>
+<script type="text/javascript">
+function showBut(but){
+    document.getElementById("look").value+=but.value;
+}
+function cle(){
+    document.getElementById("look").value=null;
+}
+function results(){
+    var num=document.getElementById("look").value;
+    if(num.indexOf("=")<0){
+        document.getElementById("look").value=eval(num);
+    }
+}
+function del(){
+    var num1=document.getElementById("look");
+    num1.value=num1.value.substring(0,num1.value.length-1);
+}
+</script>
+<body>
+    <div class="content">
+        <p>计算器</p>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" name="looks" id="look" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="showBut(this)" /></td>
+            <td><input type="button" value="8" onclick="showBut(this)" /></td>
+            <td><input type="button" value="9" onclick="showBut(this)" /></td>
+            <td><input type="button" value="+" onclick="showBut(this)" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="showBut(this)" /></td>
+            <td><input type="button" value="5" onclick="showBut(this)" /></td>
+            <td><input type="button" value="6" onclick="showBut(this)" /></td>
+            <td><input type="button" value="-" onclick="showBut(this)" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="showBut(this)" /></td>
+            <td><input type="button" value="2" onclick="showBut(this)" /></td>
+            <td><input type="button" value="3" onclick="showBut(this)" /></td>
+            <td><input type="button" value="*" onclick="showBut(this)" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="." onclick="showBut(this)" /></td>
+            <td><input type="button" value="0" onclick="showBut(this)" /></td>
+            <td><input type="button" value="<<---" onclick="del()" /></td>
+            <td><input type="button" value="/" onclick="showBut(this)" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="C" id="qc" onclick="cle()" /></td>
+            <td colspan="2"><input type="button" value="=" id="dy" onclick="results()" /></td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
